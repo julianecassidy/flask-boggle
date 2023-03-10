@@ -29,12 +29,12 @@ class WordList:
 
     def check_word(self, word):
         """Is word in word list?
-        
+
             >>> w1 = WordList("test_dictionary.txt")
-            >>> 'DOG' in w1.words
+            >>> w1.check_word("DOG")
             True
-            
-            >>> 'MOUSE' in w1.words
+
+            >>> w1.check_word("MOUSE")
             False
             """
 
