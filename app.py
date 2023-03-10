@@ -27,6 +27,5 @@ def new_game():
     games[game_id] = game
     board = game.board
     json_data = jsonify({"gameId": game_id, "board": board})
-    print(json_data)
-    return
-    # return jsonify({"gameId": game_id, "board": board})
+
+    return jsonify({"gameId": game_id, "board": board})
