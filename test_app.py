@@ -46,3 +46,22 @@ class BoggleAppTestCase(TestCase):
             # Test that route returns 200 from server
             self.assertEqual(response.status_code, 200)
 
+    def test_api_score_word(self):
+        """Test the check for word validity."""
+
+        with self.client as client:
+            game = client.post("/api/new-game")
+            json_data = game.get_json()
+            current_game_id = json_data["gameId"]
+            resp = client.post('/api/score-word',
+                               json={"gameId": current_game_id,
+                                     "word": "ffffjoinbpl"}) 
+            self.assertIn("not-word", resp)
+            resp = client.post('/api/score-word',
+                               json={"gameId": current_game_id,
+                                     "word": "ffffjoinbpl"})
+            
+            resp = client.post('/api/score-word',
+                               json={"gameId": current_game_id,
+                                     "word": "ffffjoinbpl"}) 
+
